@@ -19,7 +19,7 @@ class NeighborhoodsController{
 
         await createNeighborhoodsService.execute({neighborhoodRanking, name, description, accessibilityRanking, valuePerSquareMeterSale, valuePerSquareMeterRental, additionalInformation, cityId})
 
-        res.send(201).json({status: "Neighborhood Created!"});
+        res.status(201).json({status: "Neighborhood Created!"});
     }   
 }
 
