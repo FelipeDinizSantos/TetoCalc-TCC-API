@@ -1,0 +1,30 @@
+{
+  "name": "TetoCalc-API",
+  "version": "1.0.0",
+  "description": "Projeto de TCC para ETEC de Taboão da Serra",
+  "main": "index.js",
+  "repository": "https://github.com/FelipeDinizSantos/TetoCalc-TCC-API.git",
+  "author": "Felipe Diniz",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "prisma": "^5.14.0",
+    "ts-node-dev": "^2.0.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "tsc",
+    "serve": "ts-node-dev --inspect --transpile-only --ignore-watch noed_modules --respawn ./app/server.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "@types/uuid": "^9.0.8",
+    "dotenv": "^16.4.5",
+    "env": "^0.0.2",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^7.1.0",
+    "uuid": "^9.0.1"
+  }
+}

@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Neighborhood{
+  id String @id @default(uuid())
+  neighborhoodRanking Float @map("neighborhood_ranking")
+  name String 
+  description String @db.LongText
+  accessibilityRanking Float @map("accessibility_ranking")
+  valuePerSquareMeterSale Decimal @db.Decimal(8,2) @map("value_per_square_meter_sale")
+  valuePerSquareMeterRental Decimal @db.Decimal(8,2) @map("value_per_square_meter_rental")
+  additionalInformation String? @db.Text @map("additional_information")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt 
+
+  properties Propertie[]
+
+  city City @relation(fields: [cityId], references: [id])
+  cityId String @map("city_id")
+
+  @@map("neighborhoods")
+}
+
+model City{
+  id String @id @default(uuid())
+  name String
+  description String @db.LongText
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  neighborhoods Neighborhood[]
+
+  @@map("citys")
+}
+
+enum StatusRole{
+  VENDIDO
+  LOCADO
+  SUSPENSO
+  ATIVO
+}
+
+enum TypeRole{
+  SOBRADO
+  APARTAMENTO
+  CASA_TERREA
+  CASA_PADRAO
+}
+
+enum TypeStructureRole{
+  CONDOMINIO
+  EDIFICIO
+  RESIDENCIAL
+}
+
+enum NegotiationRole{
+  VENDA
+  LOCACAO
+}
+
+model Propertie{
+  id String @id @default(uuid())
+  status StatusRole 
+  type TypeRole @default(CASA_TERREA)
+  typeStructure TypeStructureRole @map("type_structure")
+  negotiation NegotiationRole
+  valuePerSquareMeter Decimal @db.Decimal(8,2) @map("value_per_square_meter")
+  value Decimal @db.Decimal(9, 2)
+  dormitories Int
+  suites Int?
+  bathrooms Int
+  parkingSpaces Int? @map("parking_spaces")
+  totalArea Float? @map("total_area")
+  usefulArea Float @map("useful_area")
+  buildingArea Float? @map("building_area")
+  landArea Float? @map("land_area") 
+
+  neighborhood Neighborhood @relation(fields: [neighborhoodId], references: [id])
+  neighborhoodId String @map("neighborhood_id")
+
+  @@map("properties")
+}
