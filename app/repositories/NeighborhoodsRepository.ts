@@ -8,7 +8,7 @@ interface ICreate{
     valuePerSquareMeterSale: number;
     valuePerSquareMeterRental: number;
     additionalInformation?: string;
-    created_at: Date;
+    createdAt: Date;
     cityId: string;
 }
 
@@ -36,7 +36,7 @@ class NeighborhoodsRepository{
         }) 
     }
     
-    public async save({neighborhoodRanking, name, description, accessibilityRanking, valuePerSquareMeterSale, valuePerSquareMeterRental, additionalInformation, created_at, cityId}:ICreate){
+    public async save({neighborhoodRanking, name, description, accessibilityRanking, valuePerSquareMeterSale, valuePerSquareMeterRental, additionalInformation, createdAt, cityId}:ICreate){
         await prisma.neighborhood.create({
             data:{
                 neighborhoodRanking,
@@ -46,7 +46,7 @@ class NeighborhoodsRepository{
                 valuePerSquareMeterSale,
                 valuePerSquareMeterRental,
                 additionalInformation,
-                created_at,
+                createdAt,
                 cityId
             }
         })

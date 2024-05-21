@@ -16,8 +16,8 @@ model Neighborhood{
   valuePerSquareMeterSale Decimal @db.Decimal(8,2) @map("value_per_square_meter_sale")
   valuePerSquareMeterRental Decimal @db.Decimal(8,2) @map("value_per_square_meter_rental")
   additionalInformation String? @db.Text @map("additional_information")
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   properties Propertie[]
 
@@ -31,8 +31,8 @@ model City{
   id String @id @default(uuid())
   name String
   description String @db.LongText
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
   
   neighborhoods Neighborhood[]
 
@@ -80,6 +80,8 @@ model Propertie{
   usefulArea Float @map("useful_area")
   buildingArea Float? @map("building_area")
   landArea Float? @map("land_area") 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   neighborhood Neighborhood @relation(fields: [neighborhoodId], references: [id])
   neighborhoodId String @map("neighborhood_id")

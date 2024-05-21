@@ -5,6 +5,6 @@ const neighborhoodsRoutes = Router();
 const neighborhoodsController = new NeighborhoodsController();
 
 neighborhoodsRoutes.get('/', neighborhoodsController.index);
-neighborhoodsRoutes.post('/', neighborhoodsController.store);
+neighborhoodsRoutes.post('/dev/', neighborhoodsController.store);
 
 export { neighborhoodsRoutes };
