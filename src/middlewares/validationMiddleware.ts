@@ -10,6 +10,6 @@ export const validate = (validations: any[]) => {
       return next();
     }
 
-    res.status(400).json({ errors: errors.array() });
+    res.status(400).json({ validation: 'failed', errors: errors.array() });
   };
 };
