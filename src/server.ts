@@ -5,6 +5,7 @@ import { routes } from './routes';
 import { errorMiddleware } from './middlewares/errorMiddleware';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 const createApp = () => {

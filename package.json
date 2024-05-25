@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "serve": "ts-node-dev --inspect --transpile-only --ignore-watch noed_modules --respawn ./app/server.ts"
+    "serve": "ts-node-dev --inspect --transpile-only --ignore-watch noed_modules --respawn ./src/server.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
@@ -24,6 +24,7 @@
     "env": "^0.0.2",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
+    "express-validator": "^7.1.0",
     "helmet": "^7.1.0",
     "uuid": "^9.0.1"
   }
