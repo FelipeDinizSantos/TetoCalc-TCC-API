@@ -5,4 +5,12 @@ export interface FindSimilarOnesDTO{
     typeStructure: TypeStructureRole;
     type: TypeRole;
     neighborhoodId: string;
+    dormitories: number;
+    suites?: number;
+    bathrooms: number;
+    parkingSpaces?: number;
+    totalArea?: number;
+    usefulArea: number;
+    buildingArea?: number;
+    landArea?: number;
 }

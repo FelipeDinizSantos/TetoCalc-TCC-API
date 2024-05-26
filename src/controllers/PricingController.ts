@@ -26,8 +26,8 @@ class PricingController{
             neighborhoodId: query.neighborhoodId as string, 
         }
 
-        const properties = await generatePricingService.execute(data);
-        res.status(200).json({properties});
+        const result = await generatePricingService.execute(data);
+        res.status(200).json({data: result});
     }
 }
 

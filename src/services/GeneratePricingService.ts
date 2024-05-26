@@ -1,4 +1,4 @@
-import { Propertie } from "@prisma/client";
+import { Property } from "@prisma/client";
 import { GeneratePricingDTO } from "../dtos/GeneratePricingDTO";
 import { PricingRepository } from "../repositories/PricingRepository";
 
@@ -9,8 +9,8 @@ class GeneratePricingService{
         this.pricingRepository = new PricingRepository();
     }
 
-    public async execute(propertie:GeneratePricingDTO): Promise<Propertie[]>{
-        return await this.pricingRepository.findSimilarOnes(propertie)
+    public async execute(property:GeneratePricingDTO): Promise<Property[]|Object>{
+        return await this.pricingRepository.findSimilarOnes(property)
     }
 }
 

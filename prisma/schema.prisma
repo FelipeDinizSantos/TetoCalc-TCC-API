@@ -19,7 +19,7 @@ model Neighborhood{
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  properties Propertie[]
+  properties Property[]
 
   city City @relation(fields: [cityId], references: [id])
   cityId String @map("city_id")
@@ -64,7 +64,7 @@ enum NegotiationRole{
   LOCACAO
 }
 
-model Propertie{
+model Property{
   id String @id @default(uuid())
   status StatusRole @default(ATIVO)
   type TypeRole @default(CASA_TERREA)
