@@ -27,10 +27,10 @@ const negotiations =[
 ]
 
 export default validate([
-    query('status').isString().withMessage(`Status must be a string and one of: ${status.join(', ')}`).toUpperCase().isIn(status),
-    query('type').isString().withMessage(`Type must be a string and one of: ${types.join(', ')}`).toUpperCase().isIn(types),
-    query('typeStructure').isString().withMessage(`TypeStructure must be a string and one of: ${typeStructures.join(', ')}`).toUpperCase().isIn(typeStructures),
-    query('negotiation').isString().withMessage(`Negotiation must be a string and one of: ${negotiations.join(', ')}`).toUpperCase().isIn(negotiations),
+    query('status').isString().toUpperCase().isIn(status).withMessage(`Status must be a string and one of: ${status.join(', ')}`),
+    query('type').isString().toUpperCase().isIn(types).withMessage(`Type must be a string and one of: ${types.join(', ')}`),
+    query('typeStructure').isString().toUpperCase().isIn(typeStructures).withMessage(`TypeStructure must be a string and one of: ${typeStructures.join(', ')}`),
+    query('negotiation').isString().toUpperCase().isIn(negotiations).withMessage(`Negotiation must be a string and one of: ${negotiations.join(', ')}`),
     query('valuePerSquareMeter').isFloat({min:0}).withMessage('ValuePerSquareMeter must be a float greater than 0'),
     query('value').isFloat({min:0}).withMessage('Value must be a float greater than 0'),
     query('dormitories').isInt({min:0}).withMessage('Dormitories must be a integer greate than 0'),

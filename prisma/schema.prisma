@@ -66,20 +66,20 @@ enum NegotiationRole{
 
 model Propertie{
   id String @id @default(uuid())
-  status StatusRole 
+  status StatusRole @default(ATIVO)
   type TypeRole @default(CASA_TERREA)
-  typeStructure TypeStructureRole @map("type_structure")
-  negotiation NegotiationRole
+  typeStructure TypeStructureRole @map("type_structure") @default(RESIDENCIAL)
+  negotiation NegotiationRole 
   valuePerSquareMeter Decimal @db.Decimal(8,2) @map("value_per_square_meter")
   value Decimal @db.Decimal(9, 2)
-  dormitories Int
-  suites Int?
+  dormitories Int 
+  suites Int? @default(0)
   bathrooms Int
-  parkingSpaces Int? @map("parking_spaces")
-  totalArea Float? @map("total_area")
+  parkingSpaces Int? @map("parking_spaces") @default(0)
+  totalArea Float? @map("total_area") @default(0)
   usefulArea Float @map("useful_area")
-  buildingArea Float? @map("building_area")
-  landArea Float? @map("land_area") 
+  buildingArea Float? @map("building_area") @default(0)
+  landArea Float? @map("land_area")  @default(0)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
