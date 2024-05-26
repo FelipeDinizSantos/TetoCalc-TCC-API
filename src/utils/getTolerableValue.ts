@@ -1,11 +1,20 @@
-export const getTolerableValue = (exactValue:number|undefined)=>{
-    if(typeof exactValue === undefined) return exactValue;
-
-    let tolerableValue;
-
-    if(exactValue as number < 60) tolerableValue = 20; 
-    if(exactValue as number > 60 && exactValue as number < 1000) tolerableValue = 100;
-    if(exactValue as number > 1000) tolerableValue = 500;
-
-    return tolerableValue;
+export function getTolerableValue(exactValue: number|undefined, mode: 'min' | 'max'): number|undefined{
+    if(exactValue){
+        switch (mode) {
+            case 'max':
+                if(exactValue <= 80) exactValue += 20;
+                else if(exactValue > 80 && exactValue < 1000) exactValue += 100;
+                else if(exactValue >= 1000) exactValue += 500;
+            
+                break;
+            case 'min':
+                if(exactValue <= 80) exactValue -= 20;
+                else if(exactValue > 80 && exactValue < 1000) exactValue -= 100;
+                else if(exactValue >= 1000) exactValue -= 500;
+                
+                break;
+        }
+        return exactValue;
+    }
+    return exactValue; 
 }

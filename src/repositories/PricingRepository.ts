@@ -53,39 +53,37 @@ class PricingRepository{
                 typeStructure,
 
                 bathrooms:{
-                    gte: bathrooms-1,
-                    lte: bathrooms+1,
+                    gte: bathrooms - 1,
+                    lte: bathrooms + 1,
                 },
                 dormitories:{
-                    gte: dormitories-1,
-                    lte: dormitories+1,
+                    gte: dormitories - 1,
+                    lte: dormitories + 1,
                 },
                 suites:{
-                    gte: suites?suites-1:suites,
-                    lte: suites?suites+1:suites,
+                    gte: suites ? suites - 1: suites,
+                    lte: suites ? suites + 1: suites,
                 },
                 parkingSpaces:{
-                    gte: parkingSpaces?parkingSpaces-1:parkingSpaces,
-                    lte: parkingSpaces?parkingSpaces+1:parkingSpaces,
+                    gte: parkingSpaces ? parkingSpaces - 1 : parkingSpaces, // Maior ou igual a
+                    lte: parkingSpaces ? parkingSpaces + 1 : parkingSpaces, // Menor ou igual a
                 },
-                
                 buildingArea:{
-                    gte: getTolerableValue(buildingArea),
-                    lte: getTolerableValue(buildingArea),
+                    gte: getTolerableValue(buildingArea, 'min'),
+                    lte: getTolerableValue(buildingArea, 'max'),
                 },
                 landArea:{
-                    gte: getTolerableValue(landArea),
-                    lte: getTolerableValue(landArea),
+                    gte: getTolerableValue(landArea, 'min'),
+                    lte: getTolerableValue(landArea, 'max'),
                 },
                 totalArea:{
-                    gte: getTolerableValue(totalArea),
-                    lte: getTolerableValue(totalArea),
+                    gte: getTolerableValue(totalArea, 'min'),
+                    lte: getTolerableValue(totalArea, 'max'),
                 },
                 usefulArea:{
-                    gte: getTolerableValue(usefulArea),
-                    lte: getTolerableValue(usefulArea),
+                    gte: getTolerableValue(usefulArea, 'min'),
+                    lte: getTolerableValue(usefulArea, 'max'),
                 },
-
                 NOT:{
                     id:{
                         in: properties.map(property => property.id)
