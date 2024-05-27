@@ -1,4 +1,4 @@
-import { NeighborhoodsRepository } from "../repositories/NeighborhoodsRepository"
+import { NeighborhoodsRepository } from "../../repositories/NeighborhoodsRepository"
 
 class GetAllNeighborhoodsService{
     private neighborhoodsRepository;

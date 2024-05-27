@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { GetAllNeighborhoodsService } from "../services/GetAllNeighborhoodsService";
+import { GetAllNeighborhoodsService } from "../services/neighborhoodsServices/GetAllNeighborhoodsService";
 
 const getAllNeighborhoodsService = new GetAllNeighborhoodsService();
 

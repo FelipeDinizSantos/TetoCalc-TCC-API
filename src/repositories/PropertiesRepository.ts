@@ -3,7 +3,7 @@ import { FindSimilarOnesDTO } from "../dtos/FindSimilarOnesDTO";
 import { prisma } from "../prisma/client";
 import { getTolerableValue } from "../utils/getTolerableValue";
 
-class PricingRepository{
+class PropertiesRepository{
     public async findSimilarOnes({
         negotiation, 
         neighborhoodId, 
@@ -17,9 +17,7 @@ class PricingRepository{
         suites,
         totalArea,
         usefulArea
-    }:FindSimilarOnesDTO):Promise<Property[]>{
-        const totalPropertiesAccepted = 5;
-
+    }:FindSimilarOnesDTO, maxPropertiesAccepted:number):Promise<Property[]>{
         const properties = await prisma.property.findMany({
             where:{
                 negotiation,
@@ -38,10 +36,10 @@ class PricingRepository{
             orderBy:{
                 valuePerSquareMeter: "desc"
             },
-            take: totalPropertiesAccepted
+            take: maxPropertiesAccepted
         }); 
 
-        if(properties.length === totalPropertiesAccepted){
+        if(properties.length === maxPropertiesAccepted){
             return properties
         }
 
@@ -93,11 +91,11 @@ class PricingRepository{
             orderBy:{
                 valuePerSquareMeter: "desc"
             },
-            take: totalPropertiesAccepted - properties.length 
+            take: maxPropertiesAccepted - properties.length 
         })
 
         return [...properties, ...additionalProperty]
     }
 }
 
-export { PricingRepository };
+export { PropertiesRepository };

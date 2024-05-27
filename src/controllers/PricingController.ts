@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 
 import { StatusRole, TypeRole, TypeStructureRole, NegotiationRole } from "@prisma/client"
-import { GeneratePricingService } from "../services/GeneratePricingService";
+import { GeneratePricingService } from "../services/pricingServices/GeneratePricingService";
 import { GeneratePricingDTO } from "../dtos/GeneratePricingDTO";
 
 const generatePricingService = new GeneratePricingService();
@@ -27,7 +27,7 @@ class PricingController{
         }
 
         const result = await generatePricingService.execute(data);
-        res.status(200).json({data: result});
+        res.status(200).json(result);
     }
 }
 
