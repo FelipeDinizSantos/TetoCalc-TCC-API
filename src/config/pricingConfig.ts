@@ -9,11 +9,11 @@ export const pricingConfig = {
         },
         '2':{
             nivel: '2',
-            description: 'Baixo nível de precisão!'
+            description: 'Nível de precisão médio!'
         },
         '3':{
             nivel: '3', 
-            description: 'Nível de precisão comprometido!'
+            description: 'Baixo nível de precisão!'
         },
         '4':{
             nivel: '4',
