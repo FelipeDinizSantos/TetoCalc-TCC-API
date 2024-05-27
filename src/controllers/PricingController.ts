@@ -9,7 +9,7 @@ const generatePricingService = new GeneratePricingService();
 class PricingController{
     public async generate(req: Request, res:Response){
         const {query} = req;
-        const data: GeneratePricingDTO = {
+        const propertyData: GeneratePricingDTO = {
             status: query.status as StatusRole,
             type: query.type as TypeRole,
             typeStructure: query.typeStructure as TypeStructureRole,
@@ -25,8 +25,10 @@ class PricingController{
             neighborhoodId: query.neighborhoodId as string, 
         }
 
-        const result = await generatePricingService.execute(data);
-        res.status(200).json(result);
+        const result = await generatePricingService.execute(propertyData);
+        res.status(200).json({
+            data: result
+        });
     }
 }
 

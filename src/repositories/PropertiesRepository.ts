@@ -1,7 +1,7 @@
 import { Property } from "@prisma/client";
 import { FindSimilarOnesDTO } from "../dtos/FindSimilarOnesDTO";
 import { prisma } from "../prisma/client";
-import { getTolerableValue } from "../utils/getTolerableValue";
+import { getTolerableAreaValue } from "../utils/getTolerableAreaValue";
 
 class PropertiesRepository{
     public async findSimilarOnes({
@@ -67,20 +67,20 @@ class PropertiesRepository{
                     lte: parkingSpaces ? parkingSpaces + 1 : parkingSpaces, 
                 },
                 buildingArea:{
-                    gte: getTolerableValue(buildingArea, 'min'),
-                    lte: getTolerableValue(buildingArea, 'max'),
+                    gte: getTolerableAreaValue(buildingArea, "building", 'min'),
+                    lte: getTolerableAreaValue(buildingArea, "building", 'max'),
                 },
                 landArea:{
-                    gte: getTolerableValue(landArea, 'min'),
-                    lte: getTolerableValue(landArea, 'max'),
+                    gte: getTolerableAreaValue(landArea, "land", 'min'),
+                    lte: getTolerableAreaValue(landArea, "land", 'max'),
                 },
                 totalArea:{
-                    gte: getTolerableValue(totalArea, 'min'),
-                    lte: getTolerableValue(totalArea, 'max'),
+                    gte: getTolerableAreaValue(totalArea, "total", 'min'),
+                    lte: getTolerableAreaValue(totalArea, "total", 'max'),
                 },
                 usefulArea:{
-                    gte: getTolerableValue(usefulArea, 'min'),
-                    lte: getTolerableValue(usefulArea, 'max'),
+                    gte: getTolerableAreaValue(usefulArea, "useful", 'min'),
+                    lte: getTolerableAreaValue(usefulArea, "useful", 'max'),
                 },
                 NOT:{
                     id:{
@@ -94,6 +94,7 @@ class PropertiesRepository{
             take: maxPropertiesAccepted - properties.length 
         })
 
+        
         return [...properties, ...additionalProperty]
     }
 }

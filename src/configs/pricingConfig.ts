@@ -2,6 +2,21 @@ export const pricingConfig = {
     maxPropertiesAccepted: 5,
     minPropertiesAccepted: 3,
 
+    tolerableValueIndexForAreas:{
+        'building':{
+            index: 0.20
+        },
+        'land':{
+            index: 0.30
+        },
+        'total':{
+            index: 0.20,
+        },
+        'useful':{
+            index: 0.20,
+        }
+    },
+
     precisionLevel:{
         '1':{
             nivel: '1',

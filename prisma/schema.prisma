@@ -54,8 +54,7 @@ enum TypeRole{
 }
 
 enum TypeStructureRole{
-  CONDOMINIO
-  EDIFICIO
+  COMERCIAL
   RESIDENCIAL
 }
 
