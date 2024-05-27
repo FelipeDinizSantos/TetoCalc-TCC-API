@@ -5,8 +5,6 @@ export interface GeneratePricingDTO{
     type: TypeRole;
     typeStructure: TypeStructureRole;
     negotiation: NegotiationRole;
-    valuePerSquareMeter: number;
-    value: number;
     dormitories: number;
     suites?: number;
     bathrooms: number;

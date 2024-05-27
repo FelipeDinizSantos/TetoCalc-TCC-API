@@ -13,8 +13,6 @@ class PricingController{
             type: query.type as TypeRole,
             typeStructure: query.typeStructure as TypeStructureRole,
             negotiation: query.negotiation as NegotiationRole,
-            valuePerSquareMeter: Number(query.valuePerSquareMeter),
-            value: Number(query.value),
             dormitories: Number(query.dormitories),
             suites: query.suites ? Number(query.suites) : undefined,
             bathrooms: Number(query.bathrooms),

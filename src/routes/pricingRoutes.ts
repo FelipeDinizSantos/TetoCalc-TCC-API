@@ -5,10 +5,6 @@ import pricingGenerateValidations from "../requests/pricingGenerateRequest";
 const pricingRoutes = Router();
 const pricingController = new PricingController();
 
-pricingRoutes.get(
-    '/generate',
-    pricingGenerateValidations, 
-    pricingController.generate
-);
+pricingRoutes.get('/generate', pricingGenerateValidations, pricingController.generate);
 
 export { pricingRoutes };
