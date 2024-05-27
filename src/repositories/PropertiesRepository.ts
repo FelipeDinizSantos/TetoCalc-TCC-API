@@ -63,8 +63,8 @@ class PropertiesRepository{
                     lte: suites ? suites + 1: suites,
                 },
                 parkingSpaces:{
-                    gte: parkingSpaces ? parkingSpaces - 1 : parkingSpaces, // Maior ou igual a
-                    lte: parkingSpaces ? parkingSpaces + 1 : parkingSpaces, // Menor ou igual a
+                    gte: parkingSpaces ? parkingSpaces - 1 : parkingSpaces,
+                    lte: parkingSpaces ? parkingSpaces + 1 : parkingSpaces, 
                 },
                 buildingArea:{
                     gte: getTolerableValue(buildingArea, 'min'),
