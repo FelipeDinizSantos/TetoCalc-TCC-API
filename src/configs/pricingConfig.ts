@@ -2,6 +2,8 @@ export const pricingConfig = {
     maxPropertiesAccepted: 5,
     minPropertiesAccepted: 3,
 
+    tolerablePropsValue: 1,
+
     tolerableValueIndexForAreas:{
         'building':{
             index: 0.20

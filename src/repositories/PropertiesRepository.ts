@@ -2,6 +2,7 @@ import { Property } from "@prisma/client";
 import { FindSimilarOnesDTO } from "../dtos/FindSimilarOnesDTO";
 import { prisma } from "../prisma/client";
 import { getTolerableAreaValue } from "../utils/getTolerableAreaValue";
+import { pricingConfig } from "../configs/pricingConfig";
 
 class PropertiesRepository{
     public async findSimilarOnes({
@@ -51,20 +52,20 @@ class PropertiesRepository{
                 typeStructure,
 
                 bathrooms:{
-                    gte: bathrooms - 1,
-                    lte: bathrooms + 1,
+                    gte: bathrooms - pricingConfig.tolerablePropsValue,
+                    lte: bathrooms + pricingConfig.tolerablePropsValue,
                 },
                 dormitories:{
-                    gte: dormitories - 1,
-                    lte: dormitories + 1,
+                    gte: dormitories - pricingConfig.tolerablePropsValue,
+                    lte: dormitories + pricingConfig.tolerablePropsValue,
                 },
                 suites:{
-                    gte: suites ? suites - 1: suites,
-                    lte: suites ? suites + 1: suites,
+                    gte: suites ? suites - pricingConfig.tolerablePropsValue: suites,
+                    lte: suites ? suites + pricingConfig.tolerablePropsValue: suites,
                 },
                 parkingSpaces:{
-                    gte: parkingSpaces ? parkingSpaces - 1 : parkingSpaces,
-                    lte: parkingSpaces ? parkingSpaces + 1 : parkingSpaces, 
+                    gte: parkingSpaces ? parkingSpaces - pricingConfig.tolerablePropsValue : parkingSpaces,
+                    lte: parkingSpaces ? parkingSpaces + pricingConfig.tolerablePropsValue : parkingSpaces, 
                 },
                 buildingArea:{
                     gte: getTolerableAreaValue(buildingArea, "building", 'min'),
