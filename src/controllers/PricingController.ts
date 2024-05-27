@@ -7,7 +7,8 @@ import { GeneratePricingDTO } from "../dtos/GeneratePricingDTO";
 const generatePricingService = new GeneratePricingService();
 
 class PricingController{
-    public async generate({query}: Request, res:Response){
+    public async generate(req: Request, res:Response){
+        const {query} = req;
         const data: GeneratePricingDTO = {
             status: query.status as StatusRole,
             type: query.type as TypeRole,
