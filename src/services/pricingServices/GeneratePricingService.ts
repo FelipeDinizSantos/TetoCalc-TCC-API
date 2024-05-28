@@ -26,24 +26,24 @@ class GeneratePricingService{
             return{
                 LevelOfPricingAccuracy: pricingConfig.precisionLevel['low'],
                 targetProperty: property,
+                propertiesUsedInProjection: properties,
                 projectedValueOfTheProperty: valueProjection,
-                propertiesUsedInProjection: properties
             }
         }
         if(properties.length === pricingConfig.minPropertiesAccepted){
             return{
                 LevelOfPricingAccuracy: pricingConfig.precisionLevel['medium'],
                 targetProperty: property,
+                propertiesUsedInProjection: properties,
                 projectedValueOfTheProperty: valueProjection,
-                propertiesUsedInProjection: properties
             }
         }
         if(properties.length > pricingConfig.minPropertiesAccepted && properties.length <= pricingConfig.maxPropertiesAccepted){
             return{
                 LevelOfPricingAccuracy: pricingConfig.precisionLevel['high'],
                 targetProperty: property,
+                propertiesUsedInProjection: properties,
                 projectedValueOfTheProperty: valueProjection,
-                propertiesUsedInProjection: properties
             }
         }
     }
