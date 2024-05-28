@@ -20,19 +20,19 @@ export const pricingConfig = {
     },
 
     precisionLevel:{
-        '1':{
+        'high':{
             nivel: '1',
             description: 'Alto nível de precisão!'
         },
-        '2':{
+        'medium':{
             nivel: '2',
             description: 'Nível de precisão médio!'
         },
-        '3':{
+        'low':{
             nivel: '3', 
             description: 'Baixo nível de precisão!'
         },
-        '4':{
+        'insufficientData':{
             nivel: '4',
             description: 'Dados insuficientes para precificação!'
         }
