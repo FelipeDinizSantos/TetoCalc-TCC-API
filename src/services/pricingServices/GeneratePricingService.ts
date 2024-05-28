@@ -27,7 +27,7 @@ class GeneratePricingService{
                 LevelOfPricingAccuracy: pricingConfig.precisionLevel['3'],
                 targetProperty: property,
                 projectedValueOfTheProperty: valueProjection,
-                propertiesUsedInPricing: properties
+                propertiesUsedInProjection: properties
             }
         }
         if(properties.length === pricingConfig.minPropertiesAccepted){
@@ -35,7 +35,7 @@ class GeneratePricingService{
                 LevelOfPricingAccuracy: pricingConfig.precisionLevel['2'],
                 targetProperty: property,
                 projectedValueOfTheProperty: valueProjection,
-                propertiesUsedInPricing: properties
+                propertiesUsedInProjection: properties
             }
         }
         if(properties.length > pricingConfig.minPropertiesAccepted && properties.length <= pricingConfig.maxPropertiesAccepted){
@@ -43,7 +43,7 @@ class GeneratePricingService{
                 LevelOfPricingAccuracy: pricingConfig.precisionLevel['1'],
                 targetProperty: property,
                 projectedValueOfTheProperty: valueProjection,
-                propertiesUsedInPricing: properties
+                propertiesUsedInProjection: properties
             }
         }
     }
