@@ -2,23 +2,6 @@ export const pricingConfig = {
     maxPropertiesAccepted: 5,
     minPropertiesAccepted: 3,
 
-    tolerablePropsValue: 1,
-
-    tolerableValueIndexForAreas:{
-        'building':{
-            index: 0.20
-        },
-        'land':{
-            index: 0.30
-        },
-        'total':{
-            index: 0.20,
-        },
-        'useful':{
-            index: 0.20,
-        }
-    },
-
     precisionLevel:{
         'high':{
             nivel: '1',
@@ -35,6 +18,23 @@ export const pricingConfig = {
         'insufficientData':{
             nivel: '4',
             description: 'Dados insuficientes para precificação!'
+        }
+    },
+    
+    tolerablePropsValue: 1,
+
+    tolerableValueIndexForAreas:{
+        'building':{
+            index: 0.20
+        },
+        'land':{
+            index: 0.30
+        },
+        'total':{
+            index: 0.20,
+        },
+        'useful':{
+            index: 0.20,
         }
     },
 }
