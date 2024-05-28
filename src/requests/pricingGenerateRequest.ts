@@ -16,8 +16,7 @@ const types = [
 ]
 
 const typeStructures =[
-    "CONDOMINIO",
-    "EDIFICIO",
+    "COMERCIAL",
     "RESIDENCIAL",
 ]
 
