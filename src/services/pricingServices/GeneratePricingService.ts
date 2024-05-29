@@ -1,6 +1,6 @@
 import { GeneratePricingDTO } from "../../dtos/GeneratePricingDTO";
 import { PropertiesRepository } from "../../repositories/PropertiesRepository";
-import { pricingConfig } from "../../configs/pricingConfig";
+import { pricing } from "../../configs/pricing";
 import { CalculatePricingService } from "./CalculatePricingService";
 import { Property } from "@prisma/client";
 
@@ -14,33 +14,33 @@ class GeneratePricingService{
     }
 
     public async execute(property:GeneratePricingDTO){
-        const properties = await this.propertiesRepository.findSimilarOnes(property, pricingConfig.maxPropertiesAccepted);
+        const properties = await this.propertiesRepository.findSimilarOnes(property, pricing.maxPropertiesAccepted);
         const valueProjection = this.calculatePricingService.execute(property as unknown as Property, properties);
 
         if(properties.length === 0){
             return{
-                LevelOfPricingAccuracy: pricingConfig.precisionLevel['insufficientData'],
+                LevelOfPricingAccuracy: pricing.precisionLevel['insufficientData'],
             }
         } 
-        if(properties.length < pricingConfig.minPropertiesAccepted){
+        if(properties.length < pricing.minPropertiesAccepted){
             return{
-                LevelOfPricingAccuracy: pricingConfig.precisionLevel['low'],
+                LevelOfPricingAccuracy: pricing.precisionLevel['low'],
                 targetProperty: property,
                 propertiesUsedInProjection: properties,
                 projectedValueOfTheProperty: valueProjection,
             }
         }
-        if(properties.length === pricingConfig.minPropertiesAccepted){
+        if(properties.length === pricing.minPropertiesAccepted){
             return{
-                LevelOfPricingAccuracy: pricingConfig.precisionLevel['medium'],
+                LevelOfPricingAccuracy: pricing.precisionLevel['medium'],
                 targetProperty: property,
                 propertiesUsedInProjection: properties,
                 projectedValueOfTheProperty: valueProjection,
             }
         }
-        if(properties.length > pricingConfig.minPropertiesAccepted && properties.length <= pricingConfig.maxPropertiesAccepted){
+        if(properties.length > pricing.minPropertiesAccepted && properties.length <= pricing.maxPropertiesAccepted){
             return{
-                LevelOfPricingAccuracy: pricingConfig.precisionLevel['high'],
+                LevelOfPricingAccuracy: pricing.precisionLevel['high'],
                 targetProperty: property,
                 propertiesUsedInProjection: properties,
                 projectedValueOfTheProperty: valueProjection,

@@ -2,7 +2,7 @@ import { Property } from "@prisma/client";
 import { FindSimilarOnesDTO } from "../dtos/FindSimilarOnesDTO";
 import { prisma } from "../prisma/client";
 import { getTolerableAreaValue } from "../utils/getTolerableAreaValue";
-import { pricingConfig } from "../configs/pricingConfig";
+import { pricing } from "../configs/pricing";
 
 class PropertiesRepository{
     public async findSimilarOnes({
@@ -52,20 +52,20 @@ class PropertiesRepository{
                 typeStructure,
 
                 bathrooms:{
-                    gte: bathrooms - pricingConfig.tolerablePropsValue,
-                    lte: bathrooms + pricingConfig.tolerablePropsValue,
+                    gte: bathrooms - pricing.tolerablePropsValue,
+                    lte: bathrooms + pricing.tolerablePropsValue,
                 },
                 dormitories:{
-                    gte: dormitories - pricingConfig.tolerablePropsValue,
-                    lte: dormitories + pricingConfig.tolerablePropsValue,
+                    gte: dormitories - pricing.tolerablePropsValue,
+                    lte: dormitories + pricing.tolerablePropsValue,
                 },
                 suites:{
-                    gte: suites ? suites - pricingConfig.tolerablePropsValue: suites,
-                    lte: suites ? suites + pricingConfig.tolerablePropsValue: suites,
+                    gte: suites ? suites - pricing.tolerablePropsValue: suites,
+                    lte: suites ? suites + pricing.tolerablePropsValue: suites,
                 },
                 parkingSpaces:{
-                    gte: parkingSpaces ? parkingSpaces - pricingConfig.tolerablePropsValue : parkingSpaces,
-                    lte: parkingSpaces ? parkingSpaces + pricingConfig.tolerablePropsValue : parkingSpaces, 
+                    gte: parkingSpaces ? parkingSpaces - pricing.tolerablePropsValue : parkingSpaces,
+                    lte: parkingSpaces ? parkingSpaces + pricing.tolerablePropsValue : parkingSpaces, 
                 },
                 buildingArea:{
                     gte: getTolerableAreaValue(buildingArea, "building", 'min'),

@@ -1,10 +1,10 @@
 import { Router} from "express";
 import { PricingController } from "../controllers/PricingController";
-import pricingGenerateValidations from "../requests/pricingGenerateRequest";
+import generatePricingRequest from "../requests/generatePricingRequest";
 
 const pricingRoutes = Router();
 const pricingController = new PricingController();
 
-pricingRoutes.get('/generate', pricingGenerateValidations, pricingController.generate);
+pricingRoutes.get('/generate', generatePricingRequest, pricingController.generate);
 
 export { pricingRoutes };
