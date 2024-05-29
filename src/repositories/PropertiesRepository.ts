@@ -16,7 +16,6 @@ class PropertiesRepository{
         landArea,
         parkingSpaces,
         suites,
-        totalArea,
         usefulArea
     }:FindSimilarOnesDTO, maxPropertiesAccepted:number):Promise<Property[]>{
         const properties = await prisma.property.findMany({
@@ -31,7 +30,6 @@ class PropertiesRepository{
                 landArea,
                 parkingSpaces,
                 suites,
-                totalArea,
                 usefulArea
             },
             orderBy:{
@@ -74,10 +72,6 @@ class PropertiesRepository{
                 landArea:{
                     gte: getTolerableAreaValue(landArea, "land", 'min'),
                     lte: getTolerableAreaValue(landArea, "land", 'max'),
-                },
-                totalArea:{
-                    gte: getTolerableAreaValue(totalArea, "total", 'min'),
-                    lte: getTolerableAreaValue(totalArea, "total", 'max'),
                 },
                 usefulArea:{
                     gte: getTolerableAreaValue(usefulArea, "useful", 'min'),

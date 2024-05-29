@@ -30,9 +30,6 @@ export const pricing = {
         land:{
             index: 0.30
         },
-        total:{
-            index: 0.20,
-        },
         useful:{
             index: 0.20,
         }
@@ -41,14 +38,12 @@ export const pricing = {
     areaWeights:{
         residential:{
             house:{
-                totalArea: 0.2,
-                buildArea: 0.2,
-                landArea: 0.1,
+                buildArea: 0.3,
+                landArea: 0.2,
                 usefulArea: 0.5,
             },
             apartament:{
-                totalArea: 0.1,
-                buildArea: 0.1,
+                buildArea: 0.2,
                 landArea: 0.1,
                 usefulArea: 0.7,
             }
@@ -56,16 +51,14 @@ export const pricing = {
         commercial:
         {
             house:{
-                totalArea: 0.1,
-                buildArea: 0.5,
-                landArea: 0.1,
-                usefulArea: 0.3,
+                buildArea: 0.3,
+                landArea: 0.3,
+                usefulArea: 0.4,
             },
             apartament:{
-                totalArea: 0.1,
-                buildArea: 0.4,
+                buildArea: 0.3,
                 landArea: 0.1,
-                usefulArea: 0.4,
+                usefulArea: 0.6,
             }
         }
     }

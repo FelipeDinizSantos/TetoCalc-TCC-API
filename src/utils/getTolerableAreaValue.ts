@@ -2,7 +2,7 @@ import { pricing } from "../configs/pricing";
 
 export function getTolerableAreaValue(
     value: number|undefined, 
-    typeArea: 'building' | 'land' | 'total' | 'useful', 
+    typeArea: 'building' | 'land' | 'useful', 
     mode: 'min' | 'max'
 ): number|undefined{
     const percentageOfTolerableArea = value as number * pricing.tolerableValueIndexForAreas[typeArea].index; 

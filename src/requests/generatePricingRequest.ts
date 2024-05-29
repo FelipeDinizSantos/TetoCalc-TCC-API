@@ -35,7 +35,6 @@ export default validate([
     query('bathrooms').isInt({min:0}).withMessage('Bathrooms devem ser um inteiro maior que 0'),
     query('parkingSpaces').isInt({min:0}).optional().withMessage('ParkingSpaces devem ser um inteiro maior que 10'),
     query('usefulArea').isFloat({min:10}).optional().withMessage('UsefulArea deve ser um número decimal maior que 10'),
-    query('totalArea').isFloat({min:10}).optional().withMessage('TotalArea deve ser um número decimal maior que 10'),
     query('buildingArea').isFloat({min:10}).optional().withMessage('BuildingArea construída deve ser um número decimal maior que 10'),
     query('landArea').isFloat({min:10}).optional().withMessage('LandArea deve ser um número decimal maior que 10'),
     query('neighborhoodId').isString().isUUID().withMessage('NeighborhoodId deve ser uma string e um UUID válido'),

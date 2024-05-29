@@ -18,7 +18,6 @@ class PricingController{
             suites: query.suites ? Number(query.suites) : undefined,
             bathrooms: Number(query.bathrooms),
             parkingSpaces: query.parkingSpaces ? Number(query.parkingSpaces) : undefined,
-            totalArea: query.totalArea ? Number(query.totalArea) : undefined,
             usefulArea: Number(query.usefulArea),
             buildingArea: query.buildingArea ? Number(query.buildingArea) : undefined,
             landArea: query.landArea ? Number(query.landArea) : undefined,

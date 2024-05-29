@@ -9,7 +9,6 @@ export interface GeneratePricingDTO{
     suites?: number;
     bathrooms: number;
     parkingSpaces?: number;
-    totalArea?: number;
     usefulArea: number;
     buildingArea?: number;
     landArea?: number; 
