@@ -32,9 +32,6 @@ class PropertiesRepository{
                 suites,
                 usefulArea
             },
-            orderBy:{
-                valuePerSquareMeter: "desc"
-            },
             take: maxPropertiesAccepted
         }); 
 
@@ -45,7 +42,10 @@ class PropertiesRepository{
         const additionalProperty = await prisma.property.findMany({
             where:{
                 negotiation,
-                type,
+                OR:[
+                    {type},
+                    {type: "CASA_PADRAO"}
+                ],
                 neighborhoodId,
                 typeStructure,
 
@@ -82,9 +82,6 @@ class PropertiesRepository{
                         in: properties.map(property => property.id)
                     }
                 }
-            },
-            orderBy:{
-                valuePerSquareMeter: "desc"
             },
             take: maxPropertiesAccepted - properties.length 
         })

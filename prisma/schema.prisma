@@ -7,19 +7,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model AccessibilityRanking{
+  id String @id @default(uuid())
+  ranking String 
+  description String
+
+  neighborhoods Neighborhood[]
+
+  @@map("accessibility_rankings")
+}
+
+model NeighborhoodRanking{
+  id String @id @default(uuid())
+  ranking String 
+  description String
+
+  neighborhoods Neighborhood[]
+  @@map("neighborhood_rankings")
+}
+
 model Neighborhood{
   id String @id @default(uuid())
-  neighborhoodRanking Float @map("neighborhood_ranking")
   name String 
   description String @db.LongText
-  accessibilityRanking Float @map("accessibility_ranking")
-  valuePerSquareMeterSale Decimal @db.Decimal(8,2) @map("value_per_square_meter_sale")
-  valuePerSquareMeterRental Decimal @db.Decimal(8,2) @map("value_per_square_meter_rental")
   additionalInformation String? @db.Text @map("additional_information")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   properties Property[]
+
+  neighborhoodRanking NeighborhoodRanking? @relation(fields: [neighborhoodRankingId], references: [id])
+  neighborhoodRankingId String? @map("neighborhood_ranking_id")
+
+  accessibilityRanking AccessibilityRanking? @relation(fields: [accessibilityRankingId], references: [id])
+  accessibilityRankingId String? @map("accessibility_ranking_id")
 
   city City @relation(fields: [cityId], references: [id])
   cityId String @map("city_id")
@@ -75,7 +96,6 @@ model Property{
   suites Int? @default(0)
   bathrooms Int
   parkingSpaces Int? @map("parking_spaces") @default(0)
-  totalArea Float? @map("total_area") @default(0)
   usefulArea Float @map("useful_area")
   buildingArea Float? @map("building_area") @default(0)
   landArea Float? @map("land_area")  @default(0)
