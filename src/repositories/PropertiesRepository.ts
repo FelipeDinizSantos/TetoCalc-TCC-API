@@ -42,12 +42,16 @@ class PropertiesRepository{
         const additionalProperty = await prisma.property.findMany({
             where:{
                 negotiation,
-                OR:[
-                    {type},
-                    {type: "CASA_PADRAO"}
-                ],
                 neighborhoodId,
                 typeStructure,
+
+                OR: type === "APARTAMENTO" 
+                ? [{ type }] 
+                : [
+                    { type },
+                    { type: "CASA_TERREA" },
+                    { type: "CASA_PADRAO" },
+                ],
 
                 bathrooms:{
                     gte: bathrooms - pricing.tolerablePropsValue,
