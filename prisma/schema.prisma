@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://Felipe_Admin:C662943d78@tetocalc.mysql.database.azure.com:3306/tetocalc?sslaccept=strict"
 }
 
 model AccessibilityRanking{
