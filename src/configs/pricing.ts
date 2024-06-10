@@ -31,7 +31,7 @@ export const pricing = {
             index: 0.30
         },
         useful:{
-            index: 0.20,
+            index: 0.60,
         }
     },
 
