@@ -3,6 +3,7 @@ import { PropertiesRepository } from "../../repositories/PropertiesRepository";
 import { pricing } from "../../configs/pricing";
 import { CalculatePricingService } from "./CalculatePricingService";
 import { Property } from "@prisma/client";
+import { Decimal } from "@prisma/client/runtime/library";
 
 class GeneratePricingService{
     private propertiesRepository: PropertiesRepository;
@@ -15,13 +16,25 @@ class GeneratePricingService{
 
     public async execute(property:GeneratePricingDTO){
         const properties = await this.propertiesRepository.findSimilarOnes(property, pricing.maxPropertiesAccepted);
-        const valueProjection = this.calculatePricingService.execute(property as unknown as Property, properties);
+        let valueProjection;
 
-        if(properties.length === 0){
-            return{
+        if (properties.length === 0) {
+            const { neighborhoodId, negotiation, type } = property;
+        
+            let valueProjection = await this.propertiesRepository.getAveragePriceOfNeighborhood({
+                neighborhoodId,
+                propertyNegotiation: negotiation,
+                propertyType: type,
+            });
+        
+            return {
                 LevelOfPricingAccuracy: pricing.precisionLevel['insufficientData'],
-            }
-        } 
+                valueProjection,
+            };
+        }
+
+        valueProjection = this.calculatePricingService.execute(property as unknown as Property, properties);
+
         if(properties.length < pricing.minPropertiesAccepted){
             return{
                 LevelOfPricingAccuracy: pricing.precisionLevel['low'],

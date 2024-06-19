@@ -34,6 +34,14 @@ model Neighborhood{
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  averageSquareMeterForTownhousesLocation Decimal? @db.Decimal(9, 2)
+  averageSquareMeterForApartmentsLocation Decimal? @db.Decimal(9, 2)
+  averageSquareMeterForOneStoryHouseLocation Decimal? @db.Decimal(9, 2)
+
+  averageSquareMeterForTownhousesSale Decimal? @db.Decimal(9, 2)
+  averageSquareMeterForApartmentsSale Decimal? @db.Decimal(9, 2)
+  averageSquareMeterForOneStoryHouseSale Decimal? @db.Decimal(9, 2)
+
   properties Property[]
 
   neighborhoodRanking NeighborhoodRanking? @relation(fields: [neighborhoodRankingId], references: [id])

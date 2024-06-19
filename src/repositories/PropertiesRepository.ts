@@ -1,8 +1,10 @@
-import { Property } from "@prisma/client";
+import { Prisma, Property } from "@prisma/client";
 import { FindSimilarOnesDTO } from "../dtos/FindSimilarOnesDTO";
 import { prisma } from "../prisma/client";
 import { getTolerableAreaValue } from "../utils/getTolerableAreaValue";
 import { pricing } from "../configs/pricing";
+import { GetAveragePriceOfNeighborhood } from "../dtos/GetAveragePriceOfNeighborhoodDTO";
+import { getFieldRelatedByNegotiationType } from "../utils/getFieldRelatedbyNegotiationType";
 
 class PropertiesRepository{
     public async findSimilarOnes({
@@ -89,9 +91,22 @@ class PropertiesRepository{
             },
             take: maxPropertiesAccepted - properties.length 
         })
-
         
         return [...properties, ...additionalProperty]
+    }
+
+    public async getAveragePriceOfNeighborhood({neighborhoodId, propertyNegotiation, propertyType}:GetAveragePriceOfNeighborhood){
+        const selectQuery:any = {};
+        selectQuery[getFieldRelatedByNegotiationType({propertyNegotiation, propertyType})] = true;
+                
+        const avaragePrice = await prisma.neighborhood.findFirst({
+            where:{
+                id: neighborhoodId,
+            },
+            select: selectQuery,
+        })
+
+        return avaragePrice;
     }
 }
 
