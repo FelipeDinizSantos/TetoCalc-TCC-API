@@ -30,6 +30,7 @@ class GeneratePricingService{
             return {
                 LevelOfPricingAccuracy: pricing.precisionLevel['insufficientData'],
                 valueProjection,
+                targetProperty: property,
             };
         }
 
